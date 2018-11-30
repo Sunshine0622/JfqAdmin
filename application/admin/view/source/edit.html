@@ -1,0 +1,124 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="c-cpid" class="control-label col-xs-12 col-sm-2">{:__('Cpid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cpid" data-rule="required" class="form-control" name="row[cpid]" type="number" value="{$row.cpid}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-appid" class="control-label col-xs-12 col-sm-2">{:__('Appid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-appid" data-rule="required" class="form-control" name="row[appid]" type="number" value="{$row.appid}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-idfa" class="control-label col-xs-12 col-sm-2">{:__('Idfa')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-idfa" data-rule="required" class="form-control" name="row[idfa]" type="text" value="{$row.idfa}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-ip" class="control-label col-xs-12 col-sm-2">{:__('Ip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ip" class="form-control" name="row[ip]" type="text" value="{$row.ip}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-timestamp" class="control-label col-xs-12 col-sm-2">{:__('Timestamp')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-timestamp" class="form-control" name="row[timestamp]" type="number" value="{$row.timestamp}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-sign" class="control-label col-xs-12 col-sm-2">{:__('Sign')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sign" class="form-control" name="row[sign]" type="text" value="{$row.sign}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-session_id" class="control-label col-xs-12 col-sm-2">{:__('Session_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-session_id" data-rule="required" data-source="session/index" class="form-control selectpage" name="row[session_id]" type="text" value="{$row.session_id}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-type" class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-type" class="form-control" name="row[type]" type="number" value="{$row.type}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-reqtype" class="control-label col-xs-12 col-sm-2">{:__('Reqtype')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-reqtype" class="form-control" name="row[reqtype]" type="number" value="{$row.reqtype}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-device" class="control-label col-xs-12 col-sm-2">{:__('Device')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-device" class="form-control" name="row[device]" type="text" value="{$row.device}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-os" class="control-label col-xs-12 col-sm-2">{:__('Os')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-os" class="form-control" name="row[os]" type="text" value="{$row.os}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-isbreak" class="control-label col-xs-12 col-sm-2">{:__('Isbreak')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-isbreak" class="form-control" name="row[isbreak]" type="text" value="{$row.isbreak}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-callback" class="control-label col-xs-12 col-sm-2">{:__('Callback')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-callback" class="form-control" name="row[callback]" type="text" value="{$row.callback}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-backtype" class="control-label col-xs-12 col-sm-2">{:__('Backtype')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-backtype" class="form-control" name="row[backtype]" type="number" value="{$row.backtype}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit" class="control-label col-xs-12 col-sm-2">{:__('Submit')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit" class="form-control" name="row[submit]" type="number" value="{$row.submit}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-adid" class="control-label col-xs-12 col-sm-2">{:__('Adid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-adid" class="form-control" name="row[adid]" type="number" value="{$row.adid}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-keywords" class="control-label col-xs-12 col-sm-2">{:__('Keywords')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-keywords" class="form-control" name="row[keywords]" type="text" value="{$row.keywords}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_mobile" class="control-label col-xs-12 col-sm-2">{:__('Is_mobile')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_mobile" class="form-control selectpicker" name="row[is_mobile]">
+                {foreach name="isMobileList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_mobile"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

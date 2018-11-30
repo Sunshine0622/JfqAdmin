@@ -1,0 +1,472 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="c-source_url" class="control-label col-xs-12 col-sm-2">动态参数</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-source_url" style="color:red;" class="form-control" readonly placeholder="" name="" type="text" value="">appid:{1}   idfa:{2}    ip:{3}   设备类型:{4}   关键词:{5}   系统版本号:{6}  回调链接：{7}  sign签名：{8}    请求时间戳：{9}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-source_url" class="control-label col-xs-12 col-sm-2">备注</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-source_url" style="color:red;" class="form-control" readonly placeholder="" name="" type="text" value="">{$row.cNote}</textarea>
+        </div>
+    </div>
+
+    <input id="c-id" class="form-control" name="id" type="hidden" value="{$row.id}">
+      
+    <div class="form-group">
+        <label for="c-appid" class="control-label col-xs-12 col-sm-2">{:__('Appid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-appid" class="form-control" name="row[appid]" type="number" value="{$row.appid}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-app_name" class="control-label col-xs-12 col-sm-2">{:__('App_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-app_name" class="form-control" name="row[app_name]" type="text" value="{$row.app_name}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-cpid" class="control-label col-xs-12 col-sm-2">{:__('Cpid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cpid" data-rule="required" class="form-control" name="row[cpid]" type="number" value="{$row.cpid}">
+        </div>
+    </div>
+   <!--  <div class="form-group">
+        <label for="c-charge" class="control-label col-xs-12 col-sm-2">{:__('Charge')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-charge" data-rule="required" class="form-control" name="row[charge]" type="text" value="{$row.charge}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-price" class="control-label col-xs-12 col-sm-2">{:__('Price')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-price" class="form-control" name="row[price]" type="text" value="{$row.price}">
+        </div>
+    </div> -->
+    
+     <div class="form-group">
+        <label for="c-api_cat" class="control-label col-xs-12 col-sm-2">渠道</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-api_cat" class="form-control selectpicker" data-live-search="true" name="row[channel]">
+                {foreach name="channel" item="vo"}
+                    <option value="{$vo.cpid}" {in name="$vo.cpid" value="$row.channel"}selected{/in}>{$vo.name}</option>
+                {/foreach}
+                 
+            </select>
+
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label for="c-channel" class="control-label col-xs-12 col-sm-2">{:__('Channel')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-channel" class="form-control" name="row[channel]" type="text" value="{$row.channel}">
+        </div>
+    </div> -->
+    <!-- <div class="form-group">
+        <label for="c-salesman" class="control-label col-xs-12 col-sm-2">{:__('Salesman')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-salesman" class="form-control" name="row[salesman]" type="text" value="{$row.salesman}">
+        </div>
+    </div> -->
+    <div class="form-group">
+        <label for="c-api_cat" class="control-label col-xs-12 col-sm-2">销售</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-api_cat" class="form-control selectpicker" data-live-search="true" name="row[salesman]">
+                {foreach name="sales" item="vo"}
+                    <option value="{$vo.sales_id}" {in name="$vo.sales_id" value="$row.salesman"}selected{/in}>{$vo.sales_name}</option>
+                {/foreach}
+                 
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-api_cat" class="control-label col-xs-12 col-sm-2">接口类型</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-api_cat" class="form-control selectpicker" name="row[api_cat]">
+                <!-- {foreach name="apiCatList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.api_cat"}selected{/in}>{$vo}</option>
+                {/foreach} -->
+                 <option value="1"  {if condition="$row['api_cat'] eq 1"}selected{/if}>特殊类型</option>
+                  <option value="0" {if condition="$row['api_cat'] eq 0"}selected{/if}>常规类型</option>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2">是否排重：</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[is_repeat]" onchange='btnChange(this[selectedIndex].value);'>
+               <!--  {foreach name="isRepeatList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_repeat"}selected{/in}>{$vo}</option>
+                {/foreach} -->
+                 <option value="0" {if condition="$row['is_repeat'] eq 0"}selected{/if}>否</option>
+                <option value="1" {if condition="$row['is_repeat'] eq 1"}selected{/if}>是</option>
+               
+            </select>
+
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label for="c-IdfaRepeat_url" class="control-label col-xs-12 col-sm-2">排重地址：</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-IdfaRepeat_url" class="form-control" name="row[IdfaRepeat_url]" type="text" value="{$row.IdfaRepeat_url}">
+        </div>
+    </div> -->
+    <div id="repeat_data"  {if condition="$row['is_repeat'] eq 0"}style="display:none;"{/if}>
+    <div class="form-group">
+        <label for="c-IdfaRepeat_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-IdfaRepeat_url" class="form-control" placeholder="排重接口地址"name="row[IdfaRepeat_url]" type="text" value="">{$row.IdfaRepeat_url}
+            </textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[repeat_request]">
+               <!--  {foreach name="isRepeatList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_repeat"}selected{/in}>{$vo}</option>
+                {/foreach} -->
+                <option value="1" {if condition="$row['repeat_request'] eq 1"}selected{/if}>get</option>
+                <option value="0" {if condition="$row['repeat_request'] eq 0"}selected{/if}>post</option>
+                <span style="color:red;">(请求方式)</span>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[repeat_keywords]">
+            
+                <option value="0" {if condition="$row['repeat_keywords'] eq 0"}selected{/if}>正常</option>
+                <option value="1" {if condition="$row['repeat_keywords'] eq 1"}selected{/if}>urlencode</option>
+                <option value="2" {if condition="$row['repeat_keywords'] eq 2"}selected{/if}>md5</option>
+                <span style="color:red;">(关键词加密方式)</span>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" placeholder="响应参数值"name="row[repeat_respone_params]" type="text" value="{$row.repeat_respone_params}">
+            <span style="color:red;">(可以做任务)</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" placeholder="响应状态码"name="row[repeat_respone_code]" type="text" value="{$row.repeat_respone_code}">
+            <span style="color:red;">(可以做任务)</span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" placeholder="响应参状态码"name="row[norepeat_respone_code]" type="text" value="{$row.norepeat_respone_code}"><span style="color:red;">(不可以做任务)</span>
+        </div>
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_source" class="control-label col-xs-12 col-sm-2">是否点击:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_source" class="form-control selectpicker" name="row[is_source]" onchange='sbtnChange(this[selectedIndex].value);'>
+               <!--  {foreach name="isSourceList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_source"}selected{/in}>{$vo}</option>
+                {/foreach} -->
+                 <option value="0" {if condition="$row['is_source'] eq 0"}selected{/if}>否</option>
+                <option value="1" {if condition="$row['is_source'] eq 1"}selected{/if}>是</option>
+               
+            </select>
+
+        </div>
+    </div>
+    <!--  <div class="form-group">
+        <label for="c-source_url" class="control-label col-xs-12 col-sm-2">点击地址:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-source_url" class="form-control" name="row[source_url]" type="text" value="{$row.source_url}">
+        </div>
+    </div> -->
+    <div id="source_data" {if condition="$row['is_source'] eq 0"}style="display:none;"{/if}>
+    <div class="form-group">
+        <label for="c-source_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-source_url" class="form-control" placeholder="点击接口请求地址"name="row[source_url]" type="text" value="">{$row.source_url}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[source_request]">
+               <!--  {foreach name="isRepeatList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_repeat"}selected{/in}>{$vo}</option>
+                {/foreach} -->
+                <option value="1" {if condition="$row['source_request'] eq 1"}selected{/if}>get</option>
+                <option value="0" {if condition="$row['source_request'] eq 0"}selected{/if}>post</option>
+                <span style="color:red;">(请求方式)</span>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[source_keywords]">
+            
+                <option value="0" {if condition="$row['source_keywords'] eq 0"}selected{/if}>正常</option>
+                <option value="1" {if condition="$row['source_keywords'] eq 1"}selected{/if}>urlencode</option>
+                <option value="2" {if condition="$row['source_keywords'] eq 2"}selected{/if}>md5</option>
+                <span style="color:red;">(关键词加密方式)</span>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control"  placeholder="响应参数值"name="row[source_respone_params]" type="text" value="{$row.source_respone_params}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control"  placeholder="响应状态码" name="row[source_respone_code]" type="text" value="{$row.source_respone_code}">
+        </div>
+    </div>
+   </div>
+    <div class="form-group">
+        <label for="c-is_submit" class="control-label col-xs-12 col-sm-2">是否上报:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_submit" class="form-control selectpicker" name="row[is_submit]" onchange='abtnChange(this[selectedIndex].value);'>
+                <!-- {foreach name="isSubmitList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_submit"}selected{/in}>{$vo}</option>
+                {/foreach} -->
+                <option value="0" {if condition="$row['is_submit'] eq 0"}selected{/if}>否</option>
+                <option value="1" {if condition="$row['is_submit'] eq 1"}selected{/if}>是</option>
+                <span style="color:red;">(关键词加密方式)</span>
+            </select>
+
+        </div>
+    </div>
+   <!--  <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2">上报地址</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" name="row[submit_url]" type="url" value="{$row.submit_url}">
+        </div>
+    </div> -->
+    <div id="submit_data" {if condition="$row['is_submit'] eq 0"}style="display:none;"{/if}>
+     <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-submit_url" class="form-control" placeholder="上报接口请求地址" name="row[submit_url]" type="url" value="">{$row.submit_url}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2">请求方式：</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[submit_request]">
+               <!--  {foreach name="isRepeatList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_repeat"}selected{/in}>{$vo}</option>
+                {/foreach} -->
+                <option value="1" {if condition="$row['submit_request'] eq 1"}selected{/if}>get</option>
+                <option value="0" {if condition="$row['submit_request'] eq 0"}selected{/if}>post</option>
+                <span style="color:red;">(请求方式)</span>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2">关键词加密</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[submit_keywords]">
+            
+                <option value="0" {if condition="$row['submit_keywords'] eq 0"}selected{/if}>正常</option>
+                <option value="1" {if condition="$row['submit_keywords'] eq 1"}selected{/if}>urlencode</option>
+                <option value="2" {if condition="$row['submit_keywords'] eq 2"}selected{/if}>md5</option>
+            </select>
+            <span style="color:red;">(关键词加密方式)</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" placeholder="响应参数值"name="row[submit_respone_params]" type="text" value="{$row.submit_respone_params}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" placeholder="响应状态码" name="row[submit_respone_code]" type="text" value="{$row.submit_respone_code}">
+        </div>
+    </div>
+   </div>
+   <div class="form-group">
+        <label for="c-is_advert" class="control-label col-xs-12 col-sm-2">是否回调:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_advert" class="form-control selectpicker" name="row[is_advert]">
+               <!--  {foreach name="isAdvertList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_advert"}selected{/in}>{$vo}</option>
+                {/foreach} -->
+                <option value="0" {if condition="$row['is_advert'] eq 0"}selected{/if}>否</option>
+                <option value="1" {if condition="$row['is_advert'] eq 1"}selected{/if}>是</option>
+                
+            </select>
+
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label for="c-source_value" class="control-label col-xs-12 col-sm-2">{:__('Source_value')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-source_value" class="form-control" name="row[source_value]" type="text" value="{$row.source_value}">
+        </div>
+    </div> -->
+    <!-- <div class="form-group">
+        <label for="c-repeat_value" class="control-label col-xs-12 col-sm-2">{:__('Repeat_value')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-repeat_value" class="form-control" name="row[repeat_value]" type="text" value="{$row.repeat_value}">
+        </div>
+    </div> -->
+   <!--  <div class="form-group">
+        <label for="c-submit_value" class="control-label col-xs-12 col-sm-2">{:__('Submit_value')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_value" class="form-control" name="row[submit_value]" type="text" value="{$row.submit_value}">
+        </div>
+    </div> -->
+    <!-- <div class="form-group">
+        <label for="c-is_advert" class="control-label col-xs-12 col-sm-2">{:__('Is_advert')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_advert" class="form-control selectpicker" name="row[is_advert]">
+                {foreach name="isAdvertList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_advert"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div> -->
+    <div class="form-group">
+        <label for="c-is_disable" class="control-label col-xs-12 col-sm-2">状态</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_disable" class="form-control selectpicker" name="row[is_disable]">
+                <!-- {foreach name="isDisableList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_disable"}selected{/in}>{$vo}</option>
+                {/foreach} -->
+                 <option value="0" {if condition="$row['is_disable'] eq '0'"}selected{/if}>正常</option>
+                <option value="1" {if condition="$row['is_disable'] eq '1'"}selected{/if}>禁用</option>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-key" class="control-label col-xs-12 col-sm-2">{:__('Key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-key" class="form-control" name="row[key]" type="text" value="{$row.key}">
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label for="c-api_cat" class="control-label col-xs-12 col-sm-2">{:__('Api_cat')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-api_cat" class="form-control selectpicker" name="row[api_cat]">
+                {foreach name="apiCatList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.api_cat"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div> -->
+    <!-- <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2">{:__('Is_repeat')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[is_repeat]">
+                {foreach name="isRepeatList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_repeat"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div> -->
+    <!-- <div class="form-group">
+        <label for="c-is_source" class="control-label col-xs-12 col-sm-2">{:__('Is_source')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_source" class="form-control selectpicker" name="row[is_source]">
+                {foreach name="isSourceList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_source"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div> -->
+    <!-- <div class="form-group">
+        <label for="c-is_submit" class="control-label col-xs-12 col-sm-2">{:__('Is_submit')}:</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_submit" class="form-control selectpicker" name="row[is_submit]">
+                {foreach name="isSubmitList" item="vo"}
+                    <option value="{$key}" {in name="key" value="$row.is_submit"}selected{/in}>{$vo}</option>
+                {/foreach}
+            </select>
+
+        </div>
+    </div> -->
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+             <input type="button" id="add-form" class="btn btn-success" value="提交">
+            <!-- <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button> -->
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+<script>
+   function btnChange(values) {
+//如果选中的是学生，显示第二个下拉框
+    if (values == "1") {
+    document.getElementById('repeat_data').style.display = 'block';
+    }
+    else {
+    document.getElementById('repeat_data').style.display = 'none';
+    }
+}
+
+ function sbtnChange(values) {
+//如果选中的是学生，显示第二个下拉框
+    if (values == "1") {
+    document.getElementById('source_data').style.display = 'block';
+    }
+    else {
+    document.getElementById('source_data').style.display = 'none';
+    }
+}
+
+ function abtnChange(values) {
+//如果选中的是学生，显示第二个下拉框
+    if (values == "1") {
+    document.getElementById('submit_data').style.display = 'block';
+    }
+    else {
+    document.getElementById('submit_data').style.display = 'none';
+    }
+}
+</script>

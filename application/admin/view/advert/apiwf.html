@@ -1,0 +1,60 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+
+    
+     <div class="form-group">
+        <label for="c-api_cat" class="control-label col-xs-6 col-sm-4">请选择外放渠道</label>
+        <div class="col-xs-6 col-sm-5">
+            <input type="hidden" value="{$row.appid}" name="appid" id="wf-appid">
+            <input type="hidden" value="{$row.cpid}" name="adid" id="wf-adid">
+             <!-- <input type="hidden" value="{$row.channel}" name="channel" id="wf-channel"> -->
+            <select  id="wf-channel" class="form-control selectpicker" data-live-search="true" name="row[channel]">
+                {foreach name="channel" item="vo"}
+                    <option value="{$vo.cpid}" id="key{$vo.cpid}" data-id="{$vo.key}">{$vo.name}</option>
+                {/foreach}
+                 
+            </select>
+
+        </div>
+    </div>
+   
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-3"></label>
+        <div class="col-xs-12 col-sm-4">
+             <input type="button" id="apiwf-form" class="btn btn-success" value="提交">
+           
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+<script>
+   function btnChange(values) {
+//如果选中的是学生，显示第二个下拉框
+    if (values == "1") {
+    document.getElementById('repeat_data').style.display = 'block';
+    }
+    else {
+    document.getElementById('repeat_data').style.display = 'none';
+    }
+}
+
+ function sbtnChange(values) {
+//如果选中的是学生，显示第二个下拉框
+    if (values == "1") {
+    document.getElementById('source_data').style.display = 'block';
+    }
+    else {
+    document.getElementById('source_data').style.display = 'none';
+    }
+}
+
+ function abtnChange(values) {
+//如果选中的是学生，显示第二个下拉框
+    if (values == "1") {
+    document.getElementById('submit_data').style.display = 'block';
+    }
+    else {
+    document.getElementById('submit_data').style.display = 'none';
+    }
+}
+</script>

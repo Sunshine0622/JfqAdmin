@@ -1,0 +1,53 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+   <!--  <div class="form-group">
+        <label for="c-cpid" class="control-label col-xs-12 col-sm-2">{:__('Cpid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cpid" data-rule="required" class="form-control" name="row[cpid]" type="number">
+        </div>
+    </div> -->
+    <div class="form-group">
+        <label for="c-name" class="control-label col-xs-12 col-sm-2">{:__('Name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-name" data-rule="required" class="form-control" name="row[name]" type="text">
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label for="c-key" class="control-label col-xs-12 col-sm-2">{:__('Key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-key" data-rule="" class="form-control" name="row[key]" type="text">
+        </div>
+    </div> -->
+     <div class="form-group">
+        <label for="c-statusdata" class="control-label col-xs-12 col-sm-2">生成密钥：</label>
+        <div class="col-xs-12 col-sm-8">
+            
+            <div class="radio">
+            
+            <label for="key1"><input id="key1" name="row[key]" type="radio" value="1"/>是</label> 
+            <label for="key2"><input id="key2" name="row[key]" type="radio" value="0"/>否</label> 
+            
+            </div>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-note" class="control-label col-xs-12 col-sm-2">{:__('Note')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-note" class="form-control" name="row[note]" type="text">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-ip" class="control-label col-xs-12 col-sm-2">{:__('Ip')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ip" class="form-control" name="row[ip]" type="text">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

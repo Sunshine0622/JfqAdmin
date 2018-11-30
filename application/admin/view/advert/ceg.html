@@ -1,0 +1,303 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label for="c-source_url" class="control-label col-xs-12 col-sm-2">动态参数</label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-source_url" style="color:red;" class="form-control" readonly placeholder="" name="" type="text" value="">appid:{1}   idfa:{2}    ip:{3}   设备类型:{4}   关键词:{5}   系统版本号:{6}  回调链接：{7}  sign签名：{8}    请求时间戳：{9}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-appid" class="control-label col-xs-12 col-sm-2">{:__('Appid')}</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-appid" class="form-control" data-rule="required" name="row[appid]" type="number" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-app_name" class="control-label col-xs-12 col-sm-2">{:__('App_name')}</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-app_name" class="form-control" data-rule="required"name="row[app_name]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-cpid" class="control-label col-xs-12 col-sm-2">{:__('Cpid')}</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-cpid" data-rule="required" class="form-control" name="row[cpid]" type="number" value="">
+        </div>
+    </div>
+  
+    
+    
+    <div class="form-group">
+        <label for="c-api_cat" class="control-label col-xs-12 col-sm-2">接口类型</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-api_cat" class="form-control selectpicker" name="row[api_cat]">
+               
+                 <option value="1" >特殊类型</option>
+                  <option value="0">常规类型</option>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2">是否排重</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[is_repeat]" class="re-data" onchange='btnChange(this[selectedIndex].value);'>
+                <option value="0">否</option>
+                <option value="1">是</option>
+                
+            </select>
+
+        </div>
+    </div>
+    <div id="repeat_data" style="display:none;">
+    <div class="form-group">
+        <label for="c-IdfaRepeat_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-IdfaRepeat_url" placeholder="排重接口地址" class="form-control" name="row[IdfaRepeat_url]" type="text" value=""></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[repeat_request]">
+            
+                <option value="1">get</option>
+                <option value="0">post</option>
+            </select>
+            <span style="color:red;">(请求方式)</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[repeat_keywords]">
+            
+                <option value="0">正常</option>
+                <option value="1">urlencode</option>
+                <option value="2">md5</option>
+            </select>
+            <span style="color:red;">(关键词加密方式)</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" placeholder="响应参数值"name="row[repeat_respone_params]" type="text" value="">
+            <span style="color:red;">(可以做任务)</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control"  placeholder="响应状态码" name="row[repeat_respone_code]" type="text" value=""><span style="color:red;">(可以做任务)</span>
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" placeholder="响应状态码"  name="row[norepeat_respone_code]" type="text" value=""><span style="color:red;">(不可以做任务)</span>
+        </div>
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_source" class="control-label col-xs-12 col-sm-2">是否点击</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_source" class="form-control selectpicker" name="row[is_source]" onchange='sbtnChange(this[selectedIndex].value);'>
+              <option value="0" >否</option>
+                <option value="1" >是</option>
+                
+            </select>
+
+        </div>
+    </div>
+    <!--  <div class="form-group">
+        <label for="c-source_url" class="control-label col-xs-12 col-sm-2">点击地址</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-source_url" class="form-control" name="row[source_url]" type="text" value="">
+        </div>
+    </div> -->
+    <div id="source_data" style="display:none;">
+     <div class="form-group">
+        <label for="c-source_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-source_url" class="form-control" placeholder="点击接口请求地址" name="row[source_url]" type="text" value=""></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[source_request]">
+              
+                <option value="1" >get</option>
+                <option value="0" >post</option>
+            </select>
+            <span style="color:red;">(请求方式)</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[source_keywords]">
+            
+                <option value="0">正常</option>
+                <option value="1">urlencode</option>
+                <option value="2">md5</option>
+            </select>
+            <span style="color:red;">(关键词加密方式)</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" placeholder="正确响应参数" name="row[source_respone_params]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" placeholder="正确响应状态码"name="row[source_respone_code]" type="text" value="">
+        </div>
+    </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_submit" class="control-label col-xs-12 col-sm-2">是否上报</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_submit" class="form-control selectpicker" name="row[is_submit]"onchange='abtnChange(this[selectedIndex].value);'>
+                <option value="0" >否</option>
+                <option value="1" >是</option>
+                
+            </select>
+
+        </div>
+    </div>
+    <!-- <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2">上报地址</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" name="row[submit_url]" type="url" value="">
+        </div>
+    </div> -->
+    <div id="submit_data" style="display:none;">
+     <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <textarea id="c-submit_url" class="form-control" placeholder="上报接口请求地址" name="row[submit_url]" type="url" value=""></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[submit_request]">
+              
+                <option value="1" >get</option>
+                <option value="0" >post</option>
+            </select>
+            <span style="color:red;">(请求方式)</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-is_repeat" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_repeat" class="form-control selectpicker" name="row[submit_keywords]">
+            
+                <option value="0">正常</option>
+                <option value="1">urlencode</option>
+                <option value="2">md5</option>
+            </select>
+            <span style="color:red;">(关键词加密方式)</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" placeholder="响应参数值"name="row[submit_respone_params]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-submit_url" class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-submit_url" class="form-control" placeholder="响应参数状态码" name="row[submit_respone_code]" type="text" value="">
+        </div>
+    </div>
+   </div>
+   <div class="form-group">
+        <label for="c-is_advert" class="control-label col-xs-12 col-sm-2">是否回调</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_advert" class="form-control selectpicker" name="row[is_advert]">
+                <option value="0" >否</option>
+                <option value="1" >是</option>
+                
+            </select>
+
+        </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="c-is_disable" class="control-label col-xs-12 col-sm-2">状态</label>
+        <div class="col-xs-12 col-sm-8">
+                        
+            <select  id="c-is_disable" class="form-control selectpicker" name="row[is_disable]">
+               
+                 <option value="0" >正常</option>
+                <option value="1" >禁用</option>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="c-key" class="control-label col-xs-12 col-sm-2">{:__('Key')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-key" class="form-control" name="row[key]" type="text" value="">
+        </div>
+    </div>
+  
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>
+<script>
+   function btnChange(values) {
+//如果选中的是学生，显示第二个下拉框
+    if (values == "1") {
+    document.getElementById('repeat_data').style.display = 'block';
+    }
+    else {
+    document.getElementById('repeat_data').style.display = 'none';
+    }
+}
+
+ function sbtnChange(values) {
+//如果选中的是学生，显示第二个下拉框
+    if (values == "1") {
+    document.getElementById('source_data').style.display = 'block';
+    }
+    else {
+    document.getElementById('source_data').style.display = 'none';
+    }
+}
+
+ function abtnChange(values) {
+//如果选中的是学生，显示第二个下拉框
+    if (values == "1") {
+    document.getElementById('submit_data').style.display = 'block';
+    }
+    else {
+    document.getElementById('submit_data').style.display = 'none';
+    }
+}
+</script>
